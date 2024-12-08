@@ -21,6 +21,7 @@ public class CitizensImpl implements Citizens{
         citizens.forEach(p -> add(p));
     }
 
+    // O(n)
     @Override
     public boolean add(Person person) {
         if (person == null || find(person.getId()) != null) {
@@ -29,16 +30,17 @@ public class CitizensImpl implements Citizens{
         return idList.add(person);
     }
 
+    // O(n)
     @Override
     public boolean remove(int id) {
         Person victim = find(id);
         if (victim == null) {
             return false;
         }
-        idList.remove(victim);
-        return true;
+        return idList.remove(victim);
     }
 
+    // O(n)
     @Override
     public Person find(int id) {
         for (Person person: idList){
@@ -49,6 +51,7 @@ public class CitizensImpl implements Citizens{
         return null;
     }
 
+    // O(n)
     @Override
     public Iterable<Person> find(int minAge, int maxAge) {
         List<Person> res = new ArrayList<>();
@@ -60,6 +63,7 @@ public class CitizensImpl implements Citizens{
         return res;
     }
 
+    // O(n)
     @Override
     public Iterable<Person> find(String lastName) {
         List<Person> res = new ArrayList<>();
@@ -71,6 +75,7 @@ public class CitizensImpl implements Citizens{
         return res;
     }
 
+    // O(n * log(n))
     @Override
     public Iterable<Person> getAllPersonSortedById() {
         List<Person> res = new ArrayList<>(idList);
@@ -78,6 +83,7 @@ public class CitizensImpl implements Citizens{
         return res;
     }
 
+    // O(n * log(n))
     @Override
     public Iterable<Person> getAllPersonSortedByLastName() {
         List<Person> res = new ArrayList<>(idList);
@@ -85,6 +91,7 @@ public class CitizensImpl implements Citizens{
         return res;
     }
 
+    // O(n * log(n))
     @Override
     public Iterable<Person> getAllPersonSortedByAge() {
         List<Person> res = new ArrayList<>(idList);
@@ -92,6 +99,7 @@ public class CitizensImpl implements Citizens{
         return res;
     }
 
+    // O(1)
     @Override
     public int size() {
         return idList.size();
