@@ -27,6 +27,13 @@ class CitizensTest {
     }
 
     @Test
+    void testCitizensImplListOfPerson() {
+        citizens = new CitizensImpl(List.of(new Person(1, "Peter", "Jackson", now.minusYears(23)),
+                new Person(1, "Peter", "Jackson", now.minusYears(23))));
+        assertEquals(1, citizens.size());
+    }
+
+    @Test
     void testAdd() {
         assertFalse(citizens.add(null));
         assertFalse(citizens.add(new Person(2, "John", "Smith", now.minusYears(20))));
@@ -74,6 +81,8 @@ class CitizensTest {
                 new Person(1, "Peter", "Jackson", now.minusYears(23)),
                 new Person(3, "Mary", "Jackson", now.minusYears(20)));
         assertIterableEquals(expected, actual);
+        res = citizens.find("");
+        assertIterableEquals(new ArrayList<Person>(), res);
     }
 
     @Test
